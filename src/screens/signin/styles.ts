@@ -72,10 +72,14 @@ export const PasswordItems = styled.View`
 
 export const UsernameInput = styled.TextInput`
   padding-left: 20px;
+  width: 80%;
+  margin-left: 10px;
 `;
 
 export const PasswordInput = styled.TextInput`
   padding-left: 20px;
+  width: 80%;
+  margin-left: 10px;
 `;
 
 export const UsernameLogo = styled.Image``;

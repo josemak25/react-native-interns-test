@@ -20,12 +20,13 @@ import {
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { CheckBox } from 'react-native';
 import PhoneIcon from '../../../assets/icons/phone';
+import Button from '../../components/button';
 
 interface SignupScreenProp extends NavigationInterface {
   testID?: string;
 }
 
-export default function SignupScreen() {
+export default function SignupScreen(props: SignupScreenProp) {
   // props: SignupScreenProp
   return (
     <Container>
@@ -60,7 +61,9 @@ export default function SignupScreen() {
             <SignUpText>SignUp</SignUpText>
           </SignUpButton>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity
+          onPress={() => props.navigation.navigate('SigninScreen')}
+        >
           <LoginButton>
             <LoginText>Log In</LoginText>
           </LoginButton>

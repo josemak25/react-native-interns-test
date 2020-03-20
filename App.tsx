@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
-import GetStartedScreen from './src/screens/get_started';
-import SignupScreen from './src/screens/signup';
+import AppLoading from './src/components/AppLoading';
+import AppRouter from './src';
 
 export default function App() {
-  // return <GetStartedScreen />;
-  return <SignupScreen />;
+  const [isAppReady, setIsAppReady] = useState(false);
+
+  return isAppReady ? (
+    <AppRouter />
+  ) : (
+    <AppLoading setIsAppReady={setIsAppReady} />
+  );
 }

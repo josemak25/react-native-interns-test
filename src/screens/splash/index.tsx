@@ -48,6 +48,7 @@ export default function SplashScreen({ navigation }: SplashScreenProp) {
 
   const checkInitialLaunch = async () => {
     // do checks here for initial launch and subsequent launch
+    console.log('ooo');
     const load = await useLocalCustom();
     switch (true) {
       case !load.firstTime:
@@ -58,7 +59,7 @@ export default function SplashScreen({ navigation }: SplashScreenProp) {
         return;
 
       case load.firstTime:
-        navigation.replace('SigninScreen');
+        navigation.replace('SignupScreen');
         return;
 
       default:

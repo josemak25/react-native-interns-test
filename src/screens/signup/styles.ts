@@ -11,7 +11,6 @@ export const Container = styled.View`
 export const AppLogo = styled.Image`
   height: 70px;
   width: 40%;
-  margin-top: 30px;
 `;
 
 export const SignUpButton = styled.View`
@@ -66,7 +65,8 @@ export const InputItem = styled.View`
 `;
 
 export const Inputs = styled.TextInput`
-  padding-left: 20px;
+  width: 80%;
+  margin-left: 10px;
 `;
 
 export const UsernameLogo = styled.Image``;
