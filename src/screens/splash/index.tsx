@@ -10,7 +10,7 @@ import { NavigationInterface } from '../types';
 import { Container, ImageContainer, Image } from './styles';
 import {
   useLocalCustom,
-  setFirst_Time_Application_load,
+  setFirst_Time_Application_load
 } from './check_first_time';
 interface SplashScreenProp extends NavigationInterface {
   testID?: string;
@@ -30,14 +30,14 @@ export default function SplashScreen({ navigation }: SplashScreenProp) {
     handleAppLayout();
     setTimeout(
       () =>
-      setSplash({
-        ...splash,
-        appLogoLoaded: false,
-        pregnancyLogoLoaded: true
-      }),
+        setSplash({
+          ...splash,
+          appLogoLoaded: false,
+          pregnancyLogoLoaded: true
+        }),
       2000
-      );
-      setTimeout(checkInitialLaunch, 4000);
+    );
+    setTimeout(checkInitialLaunch, 4000);
   }, []);
 
   const handleAppLayout = () => {
@@ -46,19 +46,25 @@ export default function SplashScreen({ navigation }: SplashScreenProp) {
     ScreenGridSizeActions(dispatch, CARD_ITEM);
   };
 
-  const checkInitialLaunch =  () => {
+  const checkInitialLaunch = async () => {
     // do checks here for initial launch and subsequent launch
-    useLocalCustom().then(load =>{
-       if (!load.firstTime){
+    const load = await useLocalCustom();
+    switch (true) {
+      case !load.firstTime:
         setFirst_Time_Application_load();
-       }
-         console.log('loading happening', load); 
-        load.remember
-          ? navigation.replace('HomeScreen')
-          : load.firstTime
-          ? navigation.replace('SigninScreen')
-          : navigation.replace('GetStartedScreen');
-    })
+
+      case load.remember:
+        navigation.replace('HomeScreen');
+        return;
+
+      case load.firstTime:
+        navigation.replace('SigninScreen');
+        return;
+
+      default:
+        navigation.replace('GetStartedScreen');
+        return;
+    }
   };
 
   return (
