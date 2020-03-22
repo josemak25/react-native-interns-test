@@ -1,4 +1,6 @@
+import { theme } from './../../theme/types';
 import styled from 'styled-components/native';
+import { Animated } from 'react-native';
 
 export const Container = styled.View`
   flex: 1;
@@ -103,3 +105,26 @@ export const FormCheckBox = styled.View`
 export const RememberMeText = styled.Text`
   margin-left: 8px;
 `;
+
+const ErrorLog = styled.View`
+  width: 100%;
+  position: absolute;
+  padding: 10px;
+  background: rgba(0,0,0,0.3);
+
+  z-index: 1;
+  height: 300px;
+  align-items: center;
+  justify-content: flex-end;
+`;
+export const AnimatedErrorLog = Animated.createAnimatedComponent(ErrorLog);
+
+const Errormessage = styled.Text`
+  width: 300px;
+  /* background:orange; */
+  text-align: center;
+  font-size: 30px;
+  font-weight:bold
+  color: white;
+`;
+export const ErrorText = Animated.createAnimatedComponent(Errormessage);

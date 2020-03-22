@@ -11,8 +11,10 @@ export const useLocalCustom = async () => {
     const get_user_launch = await AsyncStorage.multiGet([
       'remember',
       'firstTime'
-    ]); 
-    const getItems = get_user_launch.reduce((acc, val) => {
+    ]);
+
+    const getItems = get_user_launch.reduce(
+      (acc, val) => {
         if (val[0] === 'remember') {
           acc.remember = Boolean(val[1]);
         }

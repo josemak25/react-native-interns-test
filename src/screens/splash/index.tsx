@@ -48,23 +48,25 @@ export default function SplashScreen({ navigation }: SplashScreenProp) {
 
   const checkInitialLaunch = async () => {
     // do checks here for initial launch and subsequent launch
-    console.log('ooo');
-    const load = await useLocalCustom();
-    switch (true) {
-      case !load.firstTime:
-        setFirst_Time_Application_load();
+    try {
+      const load = await useLocalCustom();
+      switch (true) {
+        case !load.firstTime:
+          setFirst_Time_Application_load();
+        case load.remember:
+          navigation.replace('HomeScreen');
+          return;
 
-      case load.remember:
-        navigation.replace('HomeScreen');
-        return;
+        case load.firstTime:
+          navigation.replace('SignupScreen');
+          return;
 
-      case load.firstTime:
-        navigation.replace('SignupScreen');
-        return;
-
-      default:
-        navigation.replace('GetStartedScreen');
-        return;
+        default:
+          navigation.replace('GetStartedScreen');
+          return;
+      }
+    } catch (error) {
+      console.error(error.message);
     }
   };
 

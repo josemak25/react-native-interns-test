@@ -7,12 +7,14 @@ import {
 
 const actionStarted = () => ({ type: USER_TYPES.STARTED });
 
-const registrationSuccess = (payload: UserResponseInterface): UserAction => ({
+export const registrationSuccess = (
+  payload: UserResponseInterface
+): UserAction => ({
   type: USER_TYPES.REGISTER_USER_SUCCESS,
   payload
 });
 
-const loginSuccess = (payload: UserResponseInterface): UserAction => ({
+export const loginSuccess = (payload: UserResponseInterface): UserAction => ({
   type: USER_TYPES.LOGIN_USER_SUCCESS,
   payload
 });
