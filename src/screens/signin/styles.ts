@@ -110,10 +110,9 @@ const ErrorLog = styled.View`
   width: 100%;
   position: absolute;
   padding: 10px;
-  background: rgba(0,0,0,0.3);
-
+  background: rgba(0,0,0,0.8);
   z-index: 1;
-  height: 300px;
+  height: 200px;
   align-items: center;
   justify-content: flex-end;
 `;
@@ -123,8 +122,7 @@ const Errormessage = styled.Text`
   width: 300px;
   /* background:orange; */
   text-align: center;
-  font-size: 30px;
-  font-weight:bold
+  font-size: 20px;
   color: white;
 `;
 export const ErrorText = Animated.createAnimatedComponent(Errormessage);
