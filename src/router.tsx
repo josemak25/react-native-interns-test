@@ -1,7 +1,7 @@
 import React from 'react';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, Header } from '@react-navigation/stack';
 import { useThemeContext } from './theme';
 import { customHeaderStyle } from './constants';
 import Screens from './screens';
@@ -34,6 +34,9 @@ export default function AppNavigator() {
         <RootStack.Screen
           name="SigninScreen"
           component={Screens.SigninScreen}
+          options={{
+            header: () => null
+          }}
         />
         <RootStack.Screen
           name="SignupScreen"

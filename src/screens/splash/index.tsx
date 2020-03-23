@@ -8,6 +8,10 @@ import { USER_TYPES } from '../../store/user/types';
 import { NavigationInterface } from '../types';
 
 import { Container, ImageContainer, Image } from './styles';
+import {
+  useLocalCustom,
+  setFirst_Time_Application_load
+} from './check_first_time';
 interface SplashScreenProp extends NavigationInterface {
   testID?: string;
 }
@@ -44,7 +48,26 @@ export default function SplashScreen({ navigation }: SplashScreenProp) {
 
   const checkInitialLaunch = async () => {
     // do checks here for initial launch and subsequent launch
-    navigation.replace('HomeScreen');
+    try {
+      const load = await useLocalCustom();
+      switch (true) {
+        case !load.firstTime:
+          setFirst_Time_Application_load();
+        case load.remember:
+          navigation.replace('HomeScreen');
+          return;
+
+        case load.firstTime:
+          navigation.replace('SignupScreen');
+          return;
+
+        default:
+          navigation.replace('GetStartedScreen');
+          return;
+      }
+    } catch (error) {
+      console.error(error.message);
+    }
   };
 
   return (
